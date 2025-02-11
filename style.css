@@ -197,65 +197,224 @@ main {
     position: relative;
 }
 
+/* -------------------------------- */
+/* 🔹 PROFILE CARD & LAYOUT FIXES 🔹 */
+/* -------------------------------- */
+
+/* Two-column layout for structured content */
+.profile-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.profile-column-left,
+.profile-column-right {
+    padding: 20px;
+}
+
+/* Profile Card */
+.profile-card {
+    background: var(--card-background);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    width: 85%;
+    max-width: 1200px;
+}
+
+/* Profile Header - Align Image to Top Right */
 .profile-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    width: 100%;
+    align-items: center;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
 }
 
-.profile-header h2 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #ff9800;
-    text-align: left;
-    margin-bottom: 0;
-}
-
-/* Updated responsive profile image */
+/* Move Image to Top Right */
 .profile-image {
-    width: 30%;
-    max-width: 300px;
-    height: auto;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
-    border: 3px solid var(--secondary-color);
     object-fit: cover;
+    border: 3px solid var(--secondary-color);
     position: absolute;
     top: 20px;
     right: 20px;
 }
 
-@media (max-width: 768px) {
+/* Adjust for smaller screens */
+@media (max-width: 900px) {
+    .profile-body {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
     .profile-image {
         position: static;
-        width: 50%;
-        max-width: 200px;
-        margin: 20px auto;
+        margin-top: 15px;
     }
 }
 
-.profile-text {
-    color: white;
-    padding-top: 60px;
-}
-
-.profile-text h3 {
-    margin-top: 40px;
-    font-size: 1.2rem;
+/* -------------------------------- */
+/* 🔹 HEADINGS & SECTION TITLES 🔹 */
+/* -------------------------------- */
+h3 {
+    font-size: 22px;
+    color: var(--secondary-color);
     border-bottom: 2px solid var(--secondary-color);
-    display: inline-block;
-    padding-bottom: 5px;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
 }
 
+/* -------------------------------- */
+/* 🔹 HIGHLIGHTED SECTIONS 🔹 */
+/* -------------------------------- */
+.basic-info {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #ff9c00;
+}
+
+.info-sections-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px; /* Adjust spacing */
+    margin-top: 20px;
+}
+
+.info-box {
+    flex: 1 1 calc(50% - 10px); /* Two items per row */
+    background: #262626;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #ff9c00;
+    box-shadow: 0px 0px 10px rgba(255, 156, 0, 0.2);
+}
+
+.info-box h3 {
+    margin-top: 0;
+    color: #ff9c00;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .info-box {
+        flex: 1 1 100%; /* Stack boxes on smaller screens */
+    }
+}
+/* Structured containers for detailed info */
+.highlight-box {
+    background: rgba(255, 140, 0, 0.1);
+    border-left: 4px solid var(--secondary-color);
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+}
+
+/* Bullet point lists inside highlight boxes */
+.highlight-box ul {
+    padding-left: 20px;
+}
+
+.highlight-box li {
+    margin-bottom: 5px;
+}
+
+/* -------------------------------- */
+/* 🔹 TOOLTIP IMPROVEMENTS 🔹 */
+/* -------------------------------- */
+.tooltip {
+    position: relative;
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--secondary-color);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--secondary-color);
+    transition: color 0.3s;
+}
+
+.tooltip:hover {
+    color: #ffa500;
+}
+
+.tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    background: rgba(0, 0, 0, 0.85);
+    color: #ffffff;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    bottom: 130%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.tooltip:hover::after {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* -------------------------------- */
+/* 🔹 PROFILE TEXT & CONTENT STYLING 🔹 */
+/* -------------------------------- */
+p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* -------------------------------- */
+/* 🔹 FIXED STYLES FOR TATTOOS, SCARS, ACCESSORIES 🔹 */
+/* -------------------------------- */
 .traits-list {
-    list-style-type: none;
-    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 0;
 }
 
+/* Bullet point lists inside "Physical Traits" */
 .traits-list li {
-    margin: 5px 0;
-    font-size: 1rem;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 8px;
+    background: var(--card-background);
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
+
+/* -------------------------------- */
+/* 🔹 RESPONSIVE ADJUSTMENTS 🔹 */
+/* -------------------------------- */
+@media (max-width: 900px) {
+    .profile-body {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-image {
+        position: static;
+        margin-top: 15px;
+    }
+}
+
 
 .description {
     margin-top: 1.5rem;
