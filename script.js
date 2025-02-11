@@ -76,13 +76,16 @@ function toggleConnection(element) {
 }
 
 // Show Asset Detail in-place and highlight the selected asset card
+// Show Asset Detail in-place and highlight the selected asset card
 function showAssetDetail(assetId, element) {
     // Remove active class from all asset cards
     let assetCards = document.querySelectorAll('.asset-card');
     assetCards.forEach(card => {
         card.classList.remove('active');
     });
+
     // Add active class to the clicked asset card
+    // (this now works because 'element' is passed from the HTML)
     element.classList.add('active');
 
     var assetContent = document.getElementById('asset-content');
@@ -96,6 +99,7 @@ function showAssetDetail(assetId, element) {
 
     document.getElementById('asset-detail').style.display = "block";
 }
+
 
 // Close Asset Detail box and remove active state from asset cards
 function closeAssetDetail() {
