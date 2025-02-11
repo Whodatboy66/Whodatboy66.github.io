@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Character Profile</title>
-    <!-- Link to the CSS file -->
+    <!-- Link to the updated CSS file -->
     <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts (optional) -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <!-- Google Fonts for modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-<!-- Header with Sticky Navigation -->
+<!-- Fixed (floating) Navigation Bar -->
 <header>
     <nav class="navbar">
         <div class="logo">Character Name</div>
@@ -25,88 +25,103 @@
             <li><a href="#gallery">Gallery</a></li>
         </ul>
         <div class="toggle-mode">
-            <button id="mode-toggle">Dark/Light Mode</button>
+            <button id="mode-toggle">Toggle Mode</button>
         </div>
     </nav>
 </header>
 
-<!-- Main Content -->
 <main>
-    <!-- Home / Landing Page -->
-    <section id="home" class="section home-section">
+    <!-- Home / Landing Page with Parallax Background -->
+    <section id="home" class="section hero-section">
         <div class="hero" style="background-image: url('background.jpg');">
+            <!-- Semi-transparent animated overlay -->
+            <div class="hero-overlay"></div>
             <div class="hero-text">
                 <h1>Character Name</h1>
                 <p>Short Tagline about the character.</p>
-                <input type="text" id="search" placeholder="Search..." />
+                <!--
+                  Search Bar Explanation:
+                  Type a keyword (e.g., "profile", "background", "skills", etc.) and press Enter.
+                  The page will smoothly scroll to the matching section.
+                -->
+                <input type="text" id="search" placeholder="Search sections...">
             </div>
         </div>
     </section>
 
-    <!-- Profile Overview (About) -->
+    <!-- Profile Overview with image on the right -->
     <section id="about" class="section">
-        <div class="container">
+        <div class="container profile-section">
             <h2>Profile Overview</h2>
             <div class="profile-info">
-                <div class="stats">
-                    <p><strong>Name:</strong> John Doe</p>
-                    <p><strong>Alias:</strong> The Shadow</p>
-                    <p><strong>Age:</strong> 35</p>
-                    <p><strong>Gender:</strong> Male</p>
-                    <p><strong>Role:</strong> Vigilante</p>
-                    <p><strong>Location:</strong> Gotham</p>
+                <div class="profile-text">
+                    <div class="stats">
+                        <p><strong>Name:</strong> John Doe</p>
+                        <p><strong>Alias:</strong> The Shadow</p>
+                        <p><strong>Age:</strong> 35</p>
+                        <p><strong>Gender:</strong> Male</p>
+                        <!-- Tooltip added on Role -->
+                        <p><strong>Role:</strong> <span class="tooltip" data-tooltip="A vigilante fighting against corruption">Vigilante</span></p>
+                        <p><strong>Location:</strong> Gotham</p>
+                    </div>
+                    <div class="profile-description">
+                        <p>This is a short description of the character. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
                 </div>
-                <div class="profile-description">
-                    <p>This is a short description of the character.</p>
-                </div>
-                <div class="profile-images">
-                    <img src="character1.jpg" alt="Character Image">
+                <div class="profile-image">
+                    <img src="images/Simon_ref.png" alt="Character Image">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Background & Story with Collapsible Dropdowns -->
+    <!-- Background & Story with Accordions -->
     <section id="background" class="section">
         <div class="container">
             <h2>Background & Story</h2>
-            <div class="dropdown">
-                <button class="dropdown-btn">Childhood</button>
-                <div class="dropdown-content">
-                    <p>Details about childhood...</p>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">Childhood</button>
+                    <div class="accordion-content">
+                        <p>Details about childhood...</p>
+                    </div>
                 </div>
-            </div>
-            <div class="dropdown">
-                <button class="dropdown-btn">Military Career</button>
-                <div class="dropdown-content">
-                    <p>Details about military career...</p>
+                <div class="accordion-item">
+                    <button class="accordion-header">Military Career</button>
+                    <div class="accordion-content">
+                        <p>Details about military career...</p>
+                    </div>
                 </div>
-            </div>
-            <div class="dropdown">
-                <button class="dropdown-btn">Present Life</button>
-                <div class="dropdown-content">
-                    <p>Details about present life...</p>
+                <div class="accordion-item">
+                    <button class="accordion-header">Present Life</button>
+                    <div class="accordion-content">
+                        <p>Details about present life...</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Personality & Traits -->
+    <!-- Personality & Traits with Card Layout -->
     <section id="personality" class="section">
         <div class="container">
             <h2>Personality & Traits</h2>
             <div class="traits">
-                <h3>Strengths</h3>
-                <ul>
-                    <li>Bravery</li>
-                    <li>Intelligence</li>
-                    <li>Agility</li>
-                </ul>
-                <h3>Weaknesses</h3>
-                <ul>
-                    <li>Impulsiveness</li>
-                    <li>Stubbornness</li>
-                </ul>
+                <div class="trait-card">
+                    <h3>Strengths</h3>
+                    <ul>
+                        <li>Bravery</li>
+                        <li>Intelligence</li>
+                        <li>Agility</li>
+                    </ul>
+                </div>
+                <div class="trait-card">
+                    <h3>Weaknesses</h3>
+                    <ul>
+                        <li>Impulsiveness</li>
+                        <li>Stubbornness</li>
+                    </ul>
+                </div>
             </div>
             <div class="preferences">
                 <h3>Likes & Dislikes</h3>
@@ -120,75 +135,103 @@
         </div>
     </section>
 
-    <!-- Connections & Relationships with Expandable Bios -->
+    <!-- Connections & Relationships with clickable cards -->
     <section id="connections" class="section">
         <div class="container">
             <h2>Connections & Relationships</h2>
-            <ul class="connections-list">
-                <li>
-                    <span class="connection-name" onclick="toggleBio(this)">Ally One</span>
-                    <div class="connection-bio" style="display:none;">
+            <div class="connections">
+                <div class="connection-card" onclick="toggleConnection(this)">
+                    <p class="connection-name">Ally One</p>
+                    <div class="connection-bio">
                         <p>Short bio for Ally One...</p>
                     </div>
-                </li>
-                <li>
-                    <span class="connection-name" onclick="toggleBio(this)">Enemy One</span>
-                    <div class="connection-bio" style="display:none;">
+                </div>
+                <div class="connection-card" onclick="toggleConnection(this)">
+                    <p class="connection-name">Enemy One</p>
+                    <div class="connection-bio">
                         <p>Short bio for Enemy One...</p>
                     </div>
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Assets & Resources with Clickable Asset Details -->
+    <!-- Assets & Resources as cards (links styled without typical link optics) -->
     <section id="assets" class="section">
         <div class="container">
             <h2>Assets & Resources</h2>
-            <ul class="assets-list">
-                <li><a href="#" onclick="showAssetDetail('asset1')">Secret Base</a></li>
-                <li><a href="#" onclick="showAssetDetail('asset2')">Custom Vehicle</a></li>
-                <li><a href="#" onclick="showAssetDetail('asset3')">High-tech Gadgets</a></li>
-            </ul>
-            <div id="asset-detail" class="asset-detail" style="display:none;">
-                <button onclick="closeAssetDetail()">Close</button>
+            <div class="assets-container">
+                <div class="asset-card" data-asset="asset1" onclick="showAssetDetail('asset1', this)">
+                    <p>Secret Base</p>
+                </div>
+                <div class="asset-card" data-asset="asset2" onclick="showAssetDetail('asset2', this)">
+                    <p>Custom Vehicle</p>
+                </div>
+                <div class="asset-card" data-asset="asset3" onclick="showAssetDetail('asset3', this)">
+                    <p>High-tech Gadgets</p>
+                </div>
+            </div>
+            <!-- Asset Detail box opens in place with a simple X as the close button -->
+            <div id="asset-detail" class="asset-detail">
+                <button class="asset-close" onclick="closeAssetDetail()">&#x2715;</button>
                 <div id="asset-content"></div>
             </div>
         </div>
     </section>
 
-    <!-- Skills & Abilities -->
+    <!-- Skills & Abilities as cards -->
     <section id="skills" class="section">
         <div class="container">
             <h2>Skills & Abilities</h2>
-            <ul class="skills-list">
-                <li>Combat Expertise</li>
-                <li>High Intelligence</li>
-                <li>Multilingual</li>
-            </ul>
+            <div class="skills">
+                <div class="skill-card">
+                    <p>Combat Expertise</p>
+                </div>
+                <div class="skill-card">
+                    <p>High Intelligence</p>
+                </div>
+                <div class="skill-card">
+                    <p>Multilingual</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Gallery Page with Lightbox Effect -->
+    <!-- Gallery Carousel with captions -->
     <section id="gallery" class="section">
         <div class="container">
             <h2>Gallery</h2>
-            <div class="gallery">
-                <img src="gallery1.jpg" alt="Gallery Image" onclick="openLightbox(this.src)">
-                <img src="gallery2.jpg" alt="Gallery Image" onclick="openLightbox(this.src)">
-                <!-- Additional images can be added here -->
+            <div class="gallery-carousel">
+                <div class="carousel-track-container">
+                    <ul class="carousel-track">
+                        <li class="carousel-slide">
+                            <img src="gallery1.jpg" alt="Gallery Image">
+                            <p class="caption">Caption for Image 1</p>
+                        </li>
+                        <li class="carousel-slide">
+                            <img src="gallery2.jpg" alt="Gallery Image">
+                            <p class="caption">Caption for Image 2</p>
+                        </li>
+                        <li class="carousel-slide">
+                            <img src="gallery3.jpg" alt="Gallery Image">
+                            <p class="caption">Caption for Image 3</p>
+                        </li>
+                    </ul>
+                </div>
+                <button class="carousel-btn next">&#10095;</button>
             </div>
         </div>
     </section>
 </main>
 
-<!-- Lightbox Modal for Enlarged Gallery Images -->
-<div id="lightbox" class="lightbox" style="display:none;">
+<!-- Optional Lightbox Modal for gallery images if needed -->
+<div id="lightbox" class="lightbox">
     <span class="close" onclick="closeLightbox()">&times;</span>
     <img class="lightbox-content" id="lightbox-img">
+    <div class="caption"></div>
 </div>
 
-<!-- Link to the JavaScript file -->
+<!-- Link to the updated JavaScript file -->
 <script src="script.js"></script>
 </body>
 </html>

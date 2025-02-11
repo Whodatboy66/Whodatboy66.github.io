@@ -1,37 +1,74 @@
 /* style.css */
 
-/* Reset margins and paddings */
+/* CSS Variables for Dark Mode (default) */
+:root {
+    --primary-color: #1e1e1e;
+    --secondary-color: #f39c12;
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --card-background: #222222;
+    /* Colors for button states */
+    --btn-hover: #444444;
+    --btn-active: #f39c12;
+}
+
+/* Light Mode Overrides */
+body.light-mode {
+    --primary-color: #ffffff;
+    --secondary-color: #f39c12;
+    --background-color: #f5f5f5;
+    --text-color: #333333;
+    --card-background: #ffffff;
+    --btn-hover: #dddddd;
+    --btn-active: #f39c12;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/* Default dark theme */
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #121212;
-    color: #ffffff;
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.5s, color 0.5s;
     scroll-behavior: smooth;
 }
 
-/* Container for page content */
+h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+}
+
 .container {
     width: 90%;
+    max-width: 1200px;
     margin: auto;
     padding: 20px;
 }
 
-/* Navigation Bar */
-.navbar {
-    position: sticky;
+/* Header and Navigation */
+header {
+    position: fixed;
     top: 0;
-    background-color: #1e1e1e;
+    width: 100%;
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: background-color 0.5s;
+}
+
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: 600;
 }
 
 .nav-links {
@@ -40,51 +77,71 @@ body {
 }
 
 .nav-links li {
-    margin: 0 10px;
+    margin: 0 15px;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: #ffffff;
+    color: var(--text-color);
+    font-weight: 600;
     transition: color 0.3s;
 }
 
 .nav-links a:hover {
-    color: #f39c12;
+    color: var(--secondary-color);
 }
 
 .toggle-mode button {
     background: none;
-    border: 1px solid #ffffff;
-    color: #ffffff;
+    border: 2px solid var(--text-color);
+    color: var(--text-color);
     padding: 5px 10px;
     cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
-/* Hero Section / Landing Page */
-.home-section .hero {
+.toggle-mode button:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+/* Prevent content from hiding behind header */
+main {
+    margin-top: 80px;
+}
+
+/* Hero Section with Parallax Effect */
+.hero-section .hero {
+    position: relative;
     height: 80vh;
     background-size: cover;
     background-position: center;
-    position: relative;
+    background-attachment: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.home-section .hero::before {
-    content: "";
+.hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     background: rgba(0,0,0,0.5);
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .hero-text {
     position: relative;
     text-align: center;
+    color: var(--text-color);
     z-index: 1;
 }
 
@@ -103,101 +160,323 @@ body {
     width: 300px;
     border: none;
     border-radius: 5px;
+    font-size: 1em;
 }
 
-/* General Section Styles */
+/* Section Styling */
 .section {
-    padding: 40px 0;
-    border-bottom: 1px solid #333;
+    padding: 60px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-h2 {
-    margin-bottom: 20px;
-    color: #f39c12;
+.section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--secondary-color);
 }
 
-/* Dropdown (Background & Story) */
-.dropdown {
-    margin-bottom: 15px;
+/* Profile Section */
+.profile-section .profile-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
-.dropdown-btn {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
+.profile-text {
+    flex: 1;
+    min-width: 250px;
+}
+
+.profile-image img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 20px;
+}
+
+/* Accordion for Background & Story */
+.accordion {
     width: 100%;
+}
+
+.accordion-item {
+    margin-bottom: 10px;
+    background-color: var(--card-background);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.accordion-header {
+    width: 100%;
+    padding: 15px;
     text-align: left;
+    background-color: var(--primary-color);
+    color: var(--text-color);
     border: none;
     outline: none;
     cursor: pointer;
     font-size: 1.1em;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.dropdown-btn:hover {
-    background-color: #444;
+/* Hover state for accordion header */
+.accordion-header:hover {
+    background-color: var(--btn-hover);
 }
 
-.dropdown-content {
-    display: none;
-    background-color: #222;
-    padding: 10px;
+/* Active state for accordion header */
+.accordion-item.active .accordion-header {
+    background-color: var(--btn-active);
+    color: var(--primary-color);
 }
 
-/* Connections & Expandable Bios */
-.connections-list {
-    list-style: none;
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 15px;
+    background-color: var(--card-background);
+    transition: max-height 0.4s ease;
 }
 
-.connection-name {
-    font-weight: bold;
+.accordion-content p {
+    padding: 15px 0;
+}
+
+/* Traits Cards */
+.traits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+.trait-card {
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 10px;
+    flex: 1;
+    min-width: 250px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.preferences, .hobbies {
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Connections */
+.connections {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.connection-card {
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
     cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover state for connection cards */
+.connection-card:hover {
+    background-color: #555;
+}
+
+/* Active state for connection cards */
+.connection-card.active {
+    background-color: var(--btn-active);
+    color: var(--primary-color);
 }
 
 .connection-bio {
-    margin-left: 20px;
+    display: none;
 }
 
-/* Assets Section */
-.assets-list {
-    list-style: none;
-}
-
-.asset-detail {
-    background-color: #222;
-    padding: 20px;
-    margin-top: 20px;
-}
-
-/* Gallery Styles */
-.gallery {
+/* Assets & Resources Cards */
+.assets-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
-.gallery img {
-    width: calc(33% - 10px);
+.asset-card {
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 10px;
+    width: 200px;
+    text-align: center;
     cursor: pointer;
-    border: 2px solid #fff;
-    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: background-color 0.3s, color 0.3s;
 }
 
-/* Lightbox Modal */
+/* Hover state for asset cards */
+.asset-card:hover {
+    background-color: #555;
+}
+
+/* Active state for asset cards */
+.asset-card.active {
+    background-color: var(--btn-active);
+    color: var(--primary-color);
+}
+
+/* Asset Detail Box */
+.asset-detail {
+    display: none;
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    margin-top: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.asset-close {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5em;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* Skills Cards */
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.skill-card {
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 10px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Gallery Carousel */
+.gallery-carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-track-container {
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.carousel-slide .caption {
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* Carousel Navigation Buttons */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--primary-color);
+    border: none;
+    color: var(--text-color);
+    font-size: 2em;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.carousel-btn:hover {
+    opacity: 1;
+}
+
+.carousel-btn.next {
+    right: 10px;
+}
+
+/* Tooltip for extra information */
+.tooltip {
+    position: relative;
+    cursor: pointer;
+    border-bottom: 1px dashed var(--secondary-color);
+}
+
+.tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    font-size: 0.8em;
+}
+
+.tooltip:hover::after {
+    opacity: 1;
+}
+
+/* Lightbox (optional) */
 .lightbox {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.8);
-    display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    z-index: 2000;
 }
 
 .lightbox-content {
     max-width: 90%;
     max-height: 80%;
+    border-radius: 10px;
 }
 
 .lightbox .close {
@@ -209,53 +488,22 @@ h2 {
     cursor: pointer;
 }
 
-/* Light Mode Overrides */
-body.light-mode {
-    background-color: #f5f5f5;
-    color: #333;
-}
-
-body.light-mode .navbar {
-    background-color: #fff;
-    border-bottom: 1px solid #ccc;
-}
-
-body.light-mode .nav-links a {
-    color: #333;
-}
-
-body.light-mode .nav-links a:hover {
-    color: #f39c12;
-}
-
-body.light-mode .dropdown-btn {
-    background-color: #ddd;
-    color: #333;
-}
-
-body.light-mode .dropdown-content {
-    background-color: #eee;
-    color: #333;
-}
-
-body.light-mode .toggle-mode button {
-    border: 1px solid #333;
-    color: #333;
-}
-
-body.light-mode .gallery img {
-    border: 2px solid #333;
-}
-
 /* Responsive Adjustments */
 @media (max-width: 768px) {
+    .profile-info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-image {
+        margin: 20px 0;
+    }
+
     .nav-links {
         flex-direction: column;
     }
-    .hero-text h1 {
-        font-size: 2em;
-    }
-    .gallery img {
-        width: calc(50% - 10px);
+
+    .nav-links li {
+        margin: 10px 0;
     }
 }
