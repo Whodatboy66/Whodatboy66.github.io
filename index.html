@@ -13,7 +13,7 @@
 <!-- Fixed (floating) Navigation Bar -->
 <header>
     <nav class="navbar">
-        <div class="logo">Simon "Schatten" Richter</div>
+        <div class="logo">Character Name</div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">Profile</a></li>
@@ -33,41 +33,48 @@
 <main>
     <!-- Home / Landing Page with Parallax Background -->
     <section id="home" class="section hero-section">
-        <div class="hero" style="background-image: url('images/House.png');">
+        <div class="hero" style="background-image: url('background.jpg');">
             <!-- Semi-transparent animated overlay -->
             <div class="hero-overlay"></div>
             <div class="hero-text">
-                <h1>Simon Richter</h1>
+                <h1>Character Name</h1>
                 <input type="text" id="search" placeholder="Search sections...">
             </div>
         </div>
     </section>
 
     <!-- Profile Overview with image on the right -->
-    <section id="about" class="section">
-        <div class="container profile-section">
-            <h2>Profile Overview</h2>
-            <div class="profile-info">
-                <div class="profile-text">
-                    <div class="stats">
-                        <p><strong>Name:</strong> Simon Richter</p>
-                        <p><strong>Alias:</strong> Schatten (Shadow)</p>
-                        <p><strong>Age:</strong> 28</p>
-                        <p><strong>Gender:</strong> Male</p>
-                        <p><strong>Ethnicity:</strong> German/Swiss</p>
-                        <p><strong>Distinguishing Features:</strong>
-                            <span class="tooltip" data-tooltip="covering his arms, chest, and back">Tattoos</span>
-                            <span class="tooltip" data-tooltip="scarred">body</span>
-                            <span class="tooltip" data-tooltip="always in a tailored suit">dressing</span>
-                        </p>
-                    </div>
-                    <div class="profile-description">
-                        <p>This is a short description of the character. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </div>
-                <div class="profile-image">
-                    <img src="images/Simon_ref.png" alt="Character Image">
-                </div>
+    <section id="about" class="section profile-container">
+        <div class="profile-card">
+            <div class="profile-header">
+                <h2>Simon Richter</h2>
+                <img src="images/Simon_ref.png" alt="Simon Richter" class="profile-image">
+            </div>
+
+            <div class="profile-text">
+                <p><strong>Alias:</strong> Schatten (Shadow)</p>
+                <p><strong>Age:</strong> 28</p>
+                <p><strong>Gender:</strong> Male</p>
+                <p><strong>Ethnicity:</strong> German/Swiss (Mother: German, Father: Swiss)</p>
+                <p><strong>Location:</strong> <span class="tooltip" data-tooltip="Main base of operation, his current home and center of his business">Munich, Germany</span></p>
+
+                <h3>Physical Traits</h3>
+                <ul class="traits-list">
+                    <li><strong>Height:</strong> 190 cm (6'2")</li>
+                    <li><strong>Weight:</strong> 90 kg (198 lbs)</li>
+                    <li><strong>Hair:</strong> Brown with dirty blonde highlights</li>
+                    <li><strong>Eyes:</strong> Deep brown</li>
+                    <li><strong>Build:</strong> Athletic, muscular</li>
+                    <li><strong>Tattoos:</strong> Extensive, covering upper body, arms, and neck</li>
+                    <li><strong>Scars:</strong> Battle wounds, torture marks, and old injuries</li>
+                    <li><strong>Dressing Style:</strong> Tailored suits, blending elegance with practicality</li>
+                    <li><strong>Watch:</strong> Custom-made Audemars Piguet with titanium wristband</li>
+                    <li><strong>Accessory:</strong> White gold cross necklace (sentimental value)</li>
+                </ul>
+
+                <p class="description">
+                    Simon Richter, known in the underworld as "Schatten," is a feared and respected cartel leader operating in Munich, Germany. His rise to power was forged through military discipline, calculated brutality, and an unshakable strategic mind. With a past stained in blood and betrayal, he rules his empire with unwavering control, hiding his true self behind a carefully curated facade of sophistication.
+                </p>
             </div>
         </div>
     </section>
@@ -80,19 +87,19 @@
                 <div class="accordion-item">
                     <button class="accordion-header">Childhood</button>
                     <div class="accordion-content">
-                        <p>Raised in Munich’s poor neighborhoods, Simon enlisted in the Bundeswehr and later the KSK, where he rose quickly...</p>
+                        <p>Details about childhood...</p>
                     </div>
                 </div>
                 <div class="accordion-item">
                     <button class="accordion-header">Military Career</button>
                     <div class="accordion-content">
-                        <p>Simon became an elite soldier but was betrayed and captured, leading to his transformation into the feared cartel leader...</p>
+                        <p>Details about military career...</p>
                     </div>
                 </div>
                 <div class="accordion-item">
                     <button class="accordion-header">Present Life</button>
                     <div class="accordion-content">
-                        <p>What he is now</p>
+                        <p>Details about present life...</p>
                     </div>
                 </div>
             </div>
@@ -138,15 +145,15 @@
             <h2>Connections & Relationships</h2>
             <div class="connections">
                 <div class="connection-card" onclick="toggleConnection(this)">
-                    <p class="connection-name">Leonie Richter</p>
+                    <p class="connection-name">Ally One</p>
                     <div class="connection-bio">
-                        <p>Simon’s sister and caretaker of his business empire’s public face.</p>
+                        <p>Short bio for Ally One...</p>
                     </div>
                 </div>
                 <div class="connection-card" onclick="toggleConnection(this)">
-                    <p class="connection-name">Paul König</p>
+                    <p class="connection-name">Enemy One</p>
                     <div class="connection-bio">
-                        <p>His best friend, right-hand man, and former KSK comrade.</p>
+                        <p>Short bio for Enemy One...</p>
                     </div>
                 </div>
             </div>
@@ -158,13 +165,13 @@
         <div class="container">
             <h2>Assets & Resources</h2>
             <div class="assets-container">
-                <div class="asset-card" data-asset="asset1" onclick="showAssetDetail('asset1', this)">
-                    <p>Richter Holdings Group</p>
+                <div class="asset-card" data-asset="asset1" onclick="showAssetDetail('asset1')">
+                    <p>Secret Base</p>
                 </div>
-                <div class="asset-card" data-asset="asset2" onclick="showAssetDetail('asset2', this)">
+                <div class="asset-card" data-asset="asset2" onclick="showAssetDetail('asset2')">
                     <p>Custom Vehicle</p>
                 </div>
-                <div class="asset-card" data-asset="asset3" onclick="showAssetDetail('asset3', this)">
+                <div class="asset-card" data-asset="asset3" onclick="showAssetDetail('asset3')">
                     <p>High-tech Gadgets</p>
                 </div>
             </div>
@@ -215,7 +222,7 @@
                         </li>
                     </ul>
                 </div>
-                <button class="carousel-btn next">&#10095;</button>
+                <button class="carousel-btn next" onclick="nextSlide()">&#10095;</button>
             </div>
         </div>
     </section>
