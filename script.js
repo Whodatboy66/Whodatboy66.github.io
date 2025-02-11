@@ -1,81 +1,109 @@
-/* script.js */
 document.addEventListener("DOMContentLoaded", function() {
-    // Toggle Dark/Light Mode with smooth transition
+    // Toggle Dark/Light Mode
     document.getElementById('mode-toggle').addEventListener('click', function() {
         document.body.classList.toggle('light-mode');
     });
 
-    // Accordion functionality for Background & Story section
+    /**
+     * Recalculates the max-height for every open accordion panel.
+     * This forces both nested and top-level accordion contents to update to their
+     * current scrollHeight (i.e. the full height of their content).
+     */
+    function updateAllAccordions() {
+        var allAccordionContents = document.querySelectorAll('.accordion-content');
+        allAccordionContents.forEach(function(content) {
+            var parentItem = content.parentElement;
+            if (parentItem.classList.contains('active')) {
+                // Force reflow (optional) and set max-height to the full scrollHeight
+                content.offsetHeight;
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    }
+
+    // Accordion functionality for both top-level and nested headers
     var accordionHeaders = document.querySelectorAll('.accordion-header');
     accordionHeaders.forEach(function(header) {
         header.addEventListener('click', function() {
             var accordionItem = this.parentElement;
-            // Toggle active state on this item
             accordionItem.classList.toggle('active');
             var content = this.nextElementSibling;
+
+            // Toggle the current panel's max-height
             if (accordionItem.classList.contains('active')) {
                 content.style.maxHeight = content.scrollHeight + "px";
             } else {
-                content.style.maxHeight = 0;
+                content.style.maxHeight = "0px";
             }
+
+            // Delay a brief moment to let the transition start, then update every open panel
+            setTimeout(updateAllAccordions, 50);
         });
     });
 
-    // -------------------------------
-    // Carousel functionality for Gallery
-    // -------------------------------
+    // Carousel functionality for the Gallery remains unchanged
     let currentSlide = 0;
     const track = document.querySelector('.carousel-track');
     const slides = Array.from(track.children);
-
     function updateCarousel() {
         const slideWidth = slides[0].getBoundingClientRect().width;
-        console.log("Updating carousel: currentSlide =", currentSlide, "slideWidth =", slideWidth);
         track.style.transform = 'translateX(-' + (currentSlide * slideWidth) + 'px)';
     }
-
-    function nextSlide() {
+    window.nextSlide = function() {
         currentSlide = (currentSlide + 1) % slides.length;
-        console.log("Next Slide: currentSlide =", currentSlide);
+        updateCarousel();
+    }
+    window.prevSlide = function() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
         updateCarousel();
     }
 
-
-    // Attach event listeners to the carousel buttons
-    const nextBtn = document.querySelector('.carousel-btn.next');
-    const prevBtn = document.querySelector('.carousel-btn.prev');
-    if (nextBtn) {
-        nextBtn.addEventListener('click', nextSlide);
-    }
-    if (prevBtn) {
-        prevBtn.addEventListener('click', prevSlide);
-    }
+    // Search functionality: Scrolls to section when pressing Enter in the search box.
+    document.getElementById('search').addEventListener('keyup', function(e) {
+        if (e.key === 'Enter') {
+            var query = this.value.toLowerCase();
+            var sections = {
+                "home": "home",
+                "profile": "profile",
+                "background": "background",
+                "appearance": "appearance",
+                "scars": "scars-tattoos",
+                "tattoos": "scars-tattoos",
+                "intimacy": "intimacy",
+                "business": "business",
+                "connections": "connections",
+                "gallery": "gallery"
+            };
+            for (var key in sections) {
+                if (key.indexOf(query) !== -1) {
+                    document.getElementById(sections[key]).scrollIntoView({ behavior: "smooth" });
+                    break;
+                }
+            }
+        }
+    });
 });
 
-// Toggle display of Connection Bio in card so that only one is active at a time
+// Toggle display of Connection Card bios so that only one is expanded at a time
 function toggleConnection(element) {
-    // Collapse all connection cards except the one clicked
     var connectionCards = document.querySelectorAll('.connection-card');
     connectionCards.forEach(card => {
         if (card !== element) {
             card.classList.remove('active');
             var bio = card.querySelector('.connection-bio');
-            if (bio) {
-                bio.style.display = "none";
-            }
+            if (bio) bio.style.display = "none";
         }
     });
-    // Toggle active state on the clicked card
+    var bio = element.querySelector('.connection-bio');
     if (element.classList.contains('active')) {
         element.classList.remove('active');
-        element.querySelector('.connection-bio').style.display = "none";
+        bio.style.display = "none";
     } else {
         element.classList.add('active');
-        element.querySelector('.connection-bio').style.display = "block";
+        bio.style.display = "block";
     }
 }
 
-// Show Asset Detail in-place and highlight the selected asset card
 // Show Asset Detail in-place and highlight the selected asset card
 function showAssetDetail(assetId, element) {
     // Remove active class from all asset cards
@@ -85,7 +113,6 @@ function showAssetDetail(assetId, element) {
     });
 
     // Add active class to the clicked asset card
-    // (this now works because 'element' is passed from the HTML)
     element.classList.add('active');
 
     var assetContent = document.getElementById('asset-content');
@@ -100,7 +127,6 @@ function showAssetDetail(assetId, element) {
     document.getElementById('asset-detail').style.display = "block";
 }
 
-
 // Close Asset Detail box and remove active state from asset cards
 function closeAssetDetail() {
     document.getElementById('asset-detail').style.display = "none";
@@ -110,33 +136,7 @@ function closeAssetDetail() {
     });
 }
 
-// Search functionality: When the user presses Enter in the search bar,
-// if the query (e.g., "profile", "background", etc.) matches a section,
-// the page smoothly scrolls to that section.
-document.getElementById('search').addEventListener('keyup', function(e) {
-    if (e.key === 'Enter') {
-        var query = this.value.toLowerCase();
-        var sections = {
-            "home": "home",
-            "profile": "about",
-            "about": "about",
-            "background": "background",
-            "personality": "personality",
-            "connections": "connections",
-            "assets": "assets",
-            "skills": "skills",
-            "gallery": "gallery"
-        };
-        for (var key in sections) {
-            if (key.indexOf(query) !== -1) {
-                document.getElementById(sections[key]).scrollIntoView({ behavior: "smooth" });
-                break;
-            }
-        }
-    }
-});
-
-// Optional Lightbox functionality for gallery images (if desired)
+// Optional Lightbox functions for gallery images
 function openLightbox(src, captionText) {
     var lightbox = document.getElementById('lightbox');
     var lightboxImg = document.getElementById('lightbox-img');
@@ -145,7 +145,6 @@ function openLightbox(src, captionText) {
     lightboxImg.src = src;
     caption.textContent = captionText || "";
 }
-
 function closeLightbox() {
     document.getElementById('lightbox').style.display = "none";
 }
