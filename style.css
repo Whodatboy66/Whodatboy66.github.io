@@ -1,0 +1,261 @@
+/* style.css */
+
+/* Reset margins and paddings */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Default dark theme */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    scroll-behavior: smooth;
+}
+
+/* Container for page content */
+.container {
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Navigation Bar */
+.navbar {
+    position: sticky;
+    top: 0;
+    background-color: #1e1e1e;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    z-index: 1000;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 10px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #f39c12;
+}
+
+.toggle-mode button {
+    background: none;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Hero Section / Landing Page */
+.home-section .hero {
+    height: 80vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-section .hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+}
+
+.hero-text {
+    position: relative;
+    text-align: center;
+    z-index: 1;
+}
+
+.hero-text h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.hero-text p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.hero-text input {
+    padding: 10px;
+    width: 300px;
+    border: none;
+    border-radius: 5px;
+}
+
+/* General Section Styles */
+.section {
+    padding: 40px 0;
+    border-bottom: 1px solid #333;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #f39c12;
+}
+
+/* Dropdown (Background & Story) */
+.dropdown {
+    margin-bottom: 15px;
+}
+
+.dropdown-btn {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+.dropdown-btn:hover {
+    background-color: #444;
+}
+
+.dropdown-content {
+    display: none;
+    background-color: #222;
+    padding: 10px;
+}
+
+/* Connections & Expandable Bios */
+.connections-list {
+    list-style: none;
+}
+
+.connection-name {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.connection-bio {
+    margin-left: 20px;
+}
+
+/* Assets Section */
+.assets-list {
+    list-style: none;
+}
+
+.asset-detail {
+    background-color: #222;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Gallery Styles */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.gallery img {
+    width: calc(33% - 10px);
+    cursor: pointer;
+    border: 2px solid #fff;
+    border-radius: 5px;
+}
+
+/* Lightbox Modal */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 80%;
+}
+
+.lightbox .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Light Mode Overrides */
+body.light-mode {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+body.light-mode .navbar {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+body.light-mode .nav-links a {
+    color: #333;
+}
+
+body.light-mode .nav-links a:hover {
+    color: #f39c12;
+}
+
+body.light-mode .dropdown-btn {
+    background-color: #ddd;
+    color: #333;
+}
+
+body.light-mode .dropdown-content {
+    background-color: #eee;
+    color: #333;
+}
+
+body.light-mode .toggle-mode button {
+    border: 1px solid #333;
+    color: #333;
+}
+
+body.light-mode .gallery img {
+    border: 2px solid #333;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+    }
+    .hero-text h1 {
+        font-size: 2em;
+    }
+    .gallery img {
+        width: calc(50% - 10px);
+    }
+}
