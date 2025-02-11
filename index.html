@@ -13,7 +13,7 @@
 <!-- Fixed (floating) Navigation Bar -->
 <header>
     <nav class="navbar">
-        <div class="logo">Character Name</div>
+        <div class="logo">Simon "Schatten" Richter</div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">Profile</a></li>
@@ -33,17 +33,11 @@
 <main>
     <!-- Home / Landing Page with Parallax Background -->
     <section id="home" class="section hero-section">
-        <div class="hero" style="background-image: url('background.jpg');">
+        <div class="hero" style="background-image: url('images/House.png');">
             <!-- Semi-transparent animated overlay -->
             <div class="hero-overlay"></div>
             <div class="hero-text">
-                <h1>Character Name</h1>
-                <p>Short Tagline about the character.</p>
-                <!--
-                  Search Bar Explanation:
-                  Type a keyword (e.g., "profile", "background", "skills", etc.) and press Enter.
-                  The page will smoothly scroll to the matching section.
-                -->
+                <h1>Simon Richter</h1>
                 <input type="text" id="search" placeholder="Search sections...">
             </div>
         </div>
@@ -56,13 +50,16 @@
             <div class="profile-info">
                 <div class="profile-text">
                     <div class="stats">
-                        <p><strong>Name:</strong> John Doe</p>
-                        <p><strong>Alias:</strong> The Shadow</p>
-                        <p><strong>Age:</strong> 35</p>
+                        <p><strong>Name:</strong> Simon Richter</p>
+                        <p><strong>Alias:</strong> Schatten (Shadow)</p>
+                        <p><strong>Age:</strong> 28</p>
                         <p><strong>Gender:</strong> Male</p>
-                        <!-- Tooltip added on Role -->
-                        <p><strong>Role:</strong> <span class="tooltip" data-tooltip="A vigilante fighting against corruption">Vigilante</span></p>
-                        <p><strong>Location:</strong> Gotham</p>
+                        <p><strong>Ethnicity:</strong> German/Swiss</p>
+                        <p><strong>Distinguishing Features:</strong>
+                            <span class="tooltip" data-tooltip="covering his arms, chest, and back">Tattoos</span>
+                            <span class="tooltip" data-tooltip="scarred">body</span>
+                            <span class="tooltip" data-tooltip="always in a tailored suit">dressing</span>
+                        </p>
                     </div>
                     <div class="profile-description">
                         <p>This is a short description of the character. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -83,19 +80,19 @@
                 <div class="accordion-item">
                     <button class="accordion-header">Childhood</button>
                     <div class="accordion-content">
-                        <p>Details about childhood...</p>
+                        <p>Raised in Munich’s poor neighborhoods, Simon enlisted in the Bundeswehr and later the KSK, where he rose quickly...</p>
                     </div>
                 </div>
                 <div class="accordion-item">
                     <button class="accordion-header">Military Career</button>
                     <div class="accordion-content">
-                        <p>Details about military career...</p>
+                        <p>Simon became an elite soldier but was betrayed and captured, leading to his transformation into the feared cartel leader...</p>
                     </div>
                 </div>
                 <div class="accordion-item">
                     <button class="accordion-header">Present Life</button>
                     <div class="accordion-content">
-                        <p>Details about present life...</p>
+                        <p>What he is now</p>
                     </div>
                 </div>
             </div>
@@ -141,15 +138,15 @@
             <h2>Connections & Relationships</h2>
             <div class="connections">
                 <div class="connection-card" onclick="toggleConnection(this)">
-                    <p class="connection-name">Ally One</p>
+                    <p class="connection-name">Leonie Richter</p>
                     <div class="connection-bio">
-                        <p>Short bio for Ally One...</p>
+                        <p>Simon’s sister and caretaker of his business empire’s public face.</p>
                     </div>
                 </div>
                 <div class="connection-card" onclick="toggleConnection(this)">
-                    <p class="connection-name">Enemy One</p>
+                    <p class="connection-name">Paul König</p>
                     <div class="connection-bio">
-                        <p>Short bio for Enemy One...</p>
+                        <p>His best friend, right-hand man, and former KSK comrade.</p>
                     </div>
                 </div>
             </div>
@@ -162,7 +159,7 @@
             <h2>Assets & Resources</h2>
             <div class="assets-container">
                 <div class="asset-card" data-asset="asset1" onclick="showAssetDetail('asset1', this)">
-                    <p>Secret Base</p>
+                    <p>Richter Holdings Group</p>
                 </div>
                 <div class="asset-card" data-asset="asset2" onclick="showAssetDetail('asset2', this)">
                     <p>Custom Vehicle</p>

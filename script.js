@@ -87,7 +87,7 @@ function showAssetDetail(assetId, element) {
 
     var assetContent = document.getElementById('asset-content');
     if (assetId === 'asset1') {
-        assetContent.innerHTML = "<h3>Secret Base</h3><p>Details about the secret base...</p>";
+        assetContent.innerHTML = "<h3>Richter Holdings Group</h3><p>The multinational corporation masking his criminal empire.</p>";
     } else if (assetId === 'asset2') {
         assetContent.innerHTML = "<h3>Custom Vehicle</h3><p>Details about the custom vehicle...</p>";
     } else if (assetId === 'asset3') {
